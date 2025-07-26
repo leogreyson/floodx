@@ -1,4 +1,4 @@
-# 🌊 FloodX - Multi-Vector DDoS Toolkit
+# FloodX - Multi-Vector DDoS Toolkit
 
 <div align="center">
 

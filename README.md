@@ -1,4 +1,4 @@
-#  FloodX - Multi-Vector DDoS Toolkit
+# 🌊 FloodX - Multi-Vector DDoS Toolkit
 
 <div align="center">
 
@@ -580,8 +580,8 @@ copies or substantial portions of the Software.
 
 - 📖 **Documentation**: [docs/](docs/)
 - 🐛 **Bug Reports**: [GitHub Issues](https://github.com/leogreyson/floodx/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/your-username/floodx-ddos-toolkit/discussions)
-- 📧 **Email**: [support@example.com](mailto:support@example.com)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/leogreyson/floodx/discussions)
+- 📧 **Email**: [info@leogreyson.org](mailto:info@leogreyson.org)
 
 ### Community
 

@@ -46,6 +46,57 @@ FloodX is a powerful, multi-vector DDoS testing framework that helps cybersecuri
 
 ### <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20"> **Quick Install**
 
+**🚀 Easy Installation (Recommended):**
+
+<details>
+<summary><strong>🪟 Windows</strong></summary>
+
+```powershell
+# Download and run the installer
+git clone https://github.com/leogreyson/floodx.git
+cd floodx
+.\install.bat
+
+# Launch FloodX (Interactive Mode)
+.\run.bat
+```
+
+</details>
+
+<details>
+<summary><strong>🐧 Linux</strong></summary>
+
+```bash
+# Download and run the installer
+git clone https://github.com/leogreyson/floodx.git
+cd floodx
+chmod +x install.sh run.sh
+./install.sh
+
+# Launch FloodX (Interactive Mode)
+./run.sh
+```
+
+</details>
+
+<details>
+<summary><strong>🍎 macOS</strong></summary>
+
+```bash
+# Download and run the installer
+git clone https://github.com/leogreyson/floodx.git
+cd floodx
+chmod +x install-macos.sh run-macos.sh
+./install-macos.sh
+
+# Launch FloodX (Interactive Mode)  
+./run-macos.sh
+```
+
+</details>
+
+**📦 Manual Installation:**
+
 ```bash
 # Clone the repository
 git clone https://github.com/leogreyson/floodx.git
@@ -54,8 +105,8 @@ cd floodx
 # Install dependencies  
 pip install -r requirements.txt
 
-# Navigate to source
-cd src/python
+# Test installation
+python main.py --help
 ```
 
 ### 🖥️ **Platform-Specific Setup**
@@ -71,7 +122,6 @@ cd src/python
 git clone https://github.com/leogreyson/floodx.git
 cd floodx
 pip install -r requirements.txt
-cd src\python
 
 # Test installation
 python main.py --help
@@ -90,7 +140,6 @@ sudo apt update && sudo apt install python3 python3-pip -y
 git clone https://github.com/leogreyson/floodx.git
 cd floodx
 pip3 install -r requirements.txt
-cd src/python
 
 # Test installation (requires sudo for raw sockets)
 sudo python3 main.py --help
@@ -110,7 +159,6 @@ brew install python3
 git clone https://github.com/leogreyson/floodx.git
 cd floodx
 pip3 install -r requirements.txt
-cd src/python
 
 # Test installation (requires sudo for raw sockets)
 sudo python3 main.py --help
@@ -121,6 +169,26 @@ sudo python3 main.py --help
 ---
 
 ## 🎯 **Quick Start**
+
+### 🚀 **Two Usage Options**
+
+**Option 1: Easy Interactive Mode (Recommended for Beginners)**
+```bash
+# Windows
+.\run.bat
+
+# Linux  
+./run.sh
+
+# macOS
+./run-macos.sh
+```
+
+**Option 2: Command Line Mode (Advanced Users)**
+```bash
+python main.py --interactive           # Interactive TUI
+python main.py [attack] [options]      # Direct command
+```
 
 ### 🎮 **Interactive Mode** (Recommended)
 ```bash
@@ -215,6 +283,17 @@ FloodX provides live monitoring with colored output:
 
 ## 🚨 **Important Usage Notes**
 
+### 🚀 **Easy Launch Scripts**
+- **Windows**: Double-click `run.bat` or use `.\run.bat` in PowerShell
+- **Linux**: Use `./run.sh` (after `chmod +x run.sh`)
+- **macOS**: Use `./run-macos.sh` (after `chmod +x run-macos.sh`)
+
+| Platform | Installer | Launcher |
+|----------|-----------|----------|
+| 🪟 **Windows** | `install.bat` | `run.bat` |
+| 🐧 **Linux** | `install.sh` | `run.sh` |
+| 🍎 **macOS** | `install-macos.sh` | `run-macos.sh` |
+
 ### ⚠️ **Administrator/Root Required**
 - **Windows**: Run PowerShell as Administrator
 - **Linux/macOS**: Use `sudo` for raw socket operations
@@ -291,8 +370,6 @@ If you find FloodX useful and want to support development, you can buy me a coff
 <div align="center">
 
 **⭐ Star this repo if you find it useful!**
-
-**🔒 Remember: Use responsibly and legally**
 
 *Made with ❤️ for cybersecurity professionals*
 

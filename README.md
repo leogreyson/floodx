@@ -1,4 +1,4 @@
-# FloodX - Multi-Vector DDoS Toolkit
+https://github.com/leogreyson/floodx# 🌊 FloodX - Multi-Vector DDoS Toolkit
 
 <div align="center">
 
@@ -11,535 +11,248 @@
     ╚═╝     ╚══════╝ ╚═════╝  ╚═════╝ ╚═════╝ ╚═╝  ╚═╝
 ```
 
-**Professional Multi-Vector DDoS Testing Framework**  
-*Network Security Research & Authorized Penetration Testing Tool*
+**Advanced Multi-Vector DDoS Testing Framework**  
+*Professional Network Security Research & Penetration Testing Tool*
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/Python-3.8%2B-brightgreen.svg)](https://python.org)
-[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](#installation)
-[![Status](https://img.shields.io/badge/Status-Active%20Development-green.svg)](#)
+[![Python](https://img.shields.io/badge/Python-3.8%2B-3776ab?logo=python&logoColor=white)](https://python.org)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-Cross--Platform-lightgrey)](#installation)
 
 </div>
 
 ---
 
-## ⚠️ **IMPORTANT LEGAL DISCLAIMER**
+## ⚠️ **LEGAL DISCLAIMER**
 
-> **🛡️ EDUCATIONAL & AUTHORIZED TESTING ONLY**
+> **🔴 FOR AUTHORIZED TESTING ONLY**
 > 
-> This tool is designed exclusively for:
-> - **Educational purposes** and cybersecurity research
-> - **Authorized penetration testing** with explicit permission
-> - **Network security assessment** of your own infrastructure
-> - **Academic research** in controlled environments
->
-> **Users are fully responsible for compliance with all applicable laws and regulations.**  
-> Unauthorized use against systems you don't own is **illegal** and **unethical**.
+> This tool is designed for:
+> - 🎓 **Educational purposes** and cybersecurity research
+> - 🔒 **Authorized penetration testing** with explicit permission
+> - 🏢 **Network security assessment** of your own systems
+> 
+> **⚖️ Users are responsible for legal compliance. Unauthorized use is illegal.**
 
 ---
 
-## 🎯 **Overview**
+## 🚀 **What is FloodX?**
 
-FloodX is a comprehensive, multi-vector DDoS testing framework designed for cybersecurity professionals, researchers, and authorized penetration testers. It provides both interactive and command-line interfaces for testing network resilience and capacity limits.
+FloodX is a powerful, multi-vector DDoS testing framework that helps cybersecurity professionals assess network resilience. It features **endless continuous attacks** with automatic restart mechanisms and intelligent IP spoofing.
 
 ### ✨ **Key Features**
 
-- 🌊 **Multi-Vector Attacks**: SYN, UDP, ICMP, HTTP, WebSocket, TLS, DNS
-- 🎮 **Interactive TUI**: Beautiful terminal interface for easy operation
-- 🚀 **High Performance**: Async/await architecture for maximum throughput
-- 🎯 **Precise Targeting**: URL parsing, automatic port detection
-- 📊 **Real-time Statistics**: Live monitoring with detailed metrics
-- 🔒 **Safety Features**: Built-in protections against misuse
-- 🌐 **Cross-Platform**: Windows, Linux, macOS support
-- 🔧 **Extensible**: Modular architecture for custom attacks
+- 🔄 **Endless Attacks**: All vectors run continuously until manually stopped
+- 🎯 **8 Attack Vectors**: SYN, HTTP, ICMP, TLS, UDP, Slowloris, WebSocket, SMTP
+- 🔄 **Auto-Restart**: Intelligent worker restart for continuous operation  
+- 🎭 **IP Spoofing**: Generate 1,500-2,500 randomized IP addresses per session
+- 📊 **Real-time Stats**: Live performance monitoring with colored output
+- 🛡️ **Safety Built-in**: Target validation and private network protection
 
 ---
 
-## 🚀 **Quick Start**
+## 📥 **Installation**
 
-### 1. Installation
+### <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" width="20"> **Prerequisites**
+- **Python 3.8+** (3.10+ recommended)
+- **Administrator/Root privileges** (for raw sockets)
+
+### <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="20"> **Quick Install**
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/floodx-ddos-toolkit.git
-cd floodx-ddos-toolkit
+git clone https://github.com/leogreyson/floodx.git
+cd floodx
 
-# Install dependencies
-pip install -r requirements.txt
+# Install dependencies  
+pip install scapy aiohttp websockets psutil colorama
 
-# Navigate to source directory  
+# Navigate to source
 cd src/python
 ```
 
-### 2. Basic Usage
-
-```bash
-# Interactive mode (recommended for beginners)
-python main.py --interactive
-
-# Direct command examples
-python main.py syn --target localhost --allow-private --duration 10
-python main.py http --target http://localhost:8080 --allow-private --threads 100
-```
-
----
-
-## 📦 **Installation Guide**
-
-### Prerequisites
-
-- **Python 3.8+** (3.10+ recommended)
-- **Administrator/Root privileges** (for raw socket operations)
-- **Network access** to target systems
-
-### Step-by-Step Installation
+### 🖥️ **Platform-Specific Setup**
 
 <details>
-<summary>🐧 <strong>Linux Installation</strong></summary>
-
-```bash
-# Update system packages
-sudo apt update && sudo apt upgrade -y
-
-# Install Python and pip
-sudo apt install python3 python3-pip python3-venv -y
-
-# Clone repository
-git clone https://github.com/your-username/floodx-ddos-toolkit.git
-cd floodx-ddos-toolkit
-
-# Create virtual environment
-python3 -m venv venv
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Test installation
-cd src/python
-python main.py --help
-```
-
-</details>
-
-<details>
-<summary>🪟 <strong>Windows Installation</strong></summary>
+<summary><img src="https://upload.wikimedia.org/wikipedia/commons/8/87/Windows_logo_-_2021.svg" width="20"> <strong>Windows</strong></summary>
 
 ```powershell
-# Install Python from python.org or Microsoft Store
-# Ensure Python is in PATH
+# Run PowerShell as Administrator
+# Install Python from python.org
 
-# Clone repository
-git clone https://github.com/your-username/floodx-ddos-toolkit.git
-cd floodx-ddos-toolkit
-
-# Create virtual environment
-python -m venv venv
-venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Test installation (Run as Administrator)
+# Clone and setup
+git clone https://github.com/leogreyson/floodx.git
+cd floodx
+pip install scapy aiohttp websockets psutil colorama
 cd src\python
+
+# Test installation
 python main.py --help
 ```
 
 </details>
 
 <details>
-<summary>🍎 <strong>macOS Installation</strong></summary>
+<summary><img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" width="20"> <strong>Linux</strong></summary>
 
 ```bash
-# Install Homebrew (if not installed)
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Update packages
+sudo apt update && sudo apt install python3 python3-pip -y
 
-# Install Python
-brew install python3
-
-# Clone repository
-git clone https://github.com/your-username/floodx-ddos-toolkit.git
-cd floodx-ddos-toolkit
-
-# Create virtual environment
-python3 -m venv venv
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Test installation
+# Clone and setup
+git clone https://github.com/leogreyson/floodx.git
+cd floodx
+pip3 install scapy aiohttp websockets psutil colorama
 cd src/python
-python main.py --help
+
+# Test installation (requires sudo for raw sockets)
+sudo python3 main.py --help
 ```
 
 </details>
 
-### Required Dependencies
+<details>
+<summary><img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" width="20"> <strong>macOS</strong></summary>
 
-Create `requirements.txt` in the root directory:
+```bash
+# Install Homebrew if needed
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-```txt
-scapy>=2.4.5
-asyncio-throttle>=1.0.2
-aiohttp>=3.8.0
-websockets>=10.0
-psutil>=5.8.0
-colorama>=0.4.4
-pyyaml>=6.0
-requests>=2.28.0
+# Install Python and clone
+brew install python3
+git clone https://github.com/leogreyson/floodx.git
+cd floodx
+pip3 install scapy aiohttp websockets psutil colorama
+cd src/python
+
+# Test installation (requires sudo for raw sockets)
+sudo python3 main.py --help
 ```
+
+</details>
 
 ---
 
-## 🎮 **Usage Guide**
+## 🎯 **Quick Start**
 
-### Interactive Mode (Recommended)
-
-The interactive TUI provides the easiest way to use FloodX:
-
+### 🎮 **Interactive Mode** (Recommended)
 ```bash
 python main.py --interactive
 ```
 
-**Features:**
-- 📋 Guided attack configuration
-- 🎯 Target validation with safety checks
-- 📊 Real-time statistics display
-- 🛡️ Built-in safety prompts
-- 💡 Helpful tips and warnings
+### ⚡ **Command Line Examples**
 
-### Command Line Mode
+All attacks now run **endlessly by default** until you press `Ctrl+C`:
 
-For automated testing and scripting:
-
-#### Basic Syntax
 ```bash
-python main.py [ATTACK_TYPE] --target [TARGET] [OPTIONS]
+# Endless SYN flood (runs until Ctrl+C)
+python main.py syn --target localhost --allow-private
+
+# Endless HTTP flood with 500 threads
+python main.py http --target http://localhost:8080 --threads 500 --allow-private
+
+# Endless multi-vector attack
+python main.py multi-enhanced --target localhost --vectors syn http tls --allow-private
+
+# Continuous attack with IP spoofing
+python main.py continuous --target localhost --vector syn --spoof-ip --allow-private
 ```
 
-#### Available Attack Types
+### 🔄 **Endless Attack Features**
 
-<details>
-<summary>🌊 <strong>Layer 4 Attacks</strong></summary>
+- **Duration 0 = Infinite**: All attacks run continuously by default
+- **Auto-Restart**: Workers automatically restart every 30-60 seconds  
+- **IP Spoofing Pools**: Generate 1,500-2,500 randomized addresses
+- **Packet Resending**: Continuous packet generation until stopped
+- **Worker Revival**: Dead workers are automatically replaced
 
-**SYN Flood**
+---
+
+## 🛠️ **Available Attack Vectors**
+
+| Vector | Description | Command |
+|--------|-------------|---------|
+| 🌊 **SYN** | TCP SYN flood | `python main.py syn --target host` |
+| 🌐 **HTTP** | HTTP request flood | `python main.py http --target http://host` |
+| 🏓 **ICMP** | ICMP ping flood | `python main.py icmp --target host` |
+| 🔐 **TLS** | TLS handshake flood | `python main.py tls --target host --port 443` |
+| 📡 **UDP** | UDP amplification | `python main.py udp --target host` |
+| 🐌 **Slowloris** | Slow HTTP connections | `python main.py slowloris --target host` |
+| 🔌 **WebSocket** | WebSocket storm | `python main.py websocket --target ws://host/ws` |
+| 📧 **SMTP** | SMTP flood | `python main.py smtp --target host --port 25` |
+
+### 🎯 **Multi-Vector Attacks**
 ```bash
-python main.py syn --target 192.168.1.100 --port 80 --threads 1000 --duration 60
+# Coordinated attack with multiple vectors
+python main.py multi-enhanced --target localhost --vectors syn http tls dns --allow-private
+
+# Legacy multi-vector
+python main.py multi --target localhost --vectors syn http --allow-private
 ```
 
-**UDP Amplification**
-```bash
-python main.py udp --target 192.168.1.100 --port 53 --threads 500 --amplifier-type dns
-```
+---
 
-**ICMP Flood**
-```bash
-python main.py icmp --target 192.168.1.100 --threads 100 --packet-size 1024
-```
-
-</details>
-
-<details>
-<summary>🌐 <strong>Layer 7 Attacks</strong></summary>
-
-**HTTP Flood**
-```bash
-python main.py http --target http://example.com --threads 200 --method GET --user-agents
-```
-
-**Slowloris**
-```bash
-python main.py slowloris --target example.com --port 80 --connections 200 --duration 300
-```
-
-**WebSocket Storm**
-```bash
-python main.py websocket --target ws://example.com/ws --connections 100 --message-rate 10
-```
-
-</details>
-
-<details>
-<summary>🔐 <strong>Protocol-Specific Attacks</strong></summary>
-
-**TLS Handshake Flood**
-```bash
-python main.py tls --target example.com --port 443 --threads 100 --duration 60
-```
-
-**Multi-Vector Attack**
-```bash
-python main.py multi --target example.com --vectors syn http tls --intensity moderate
-```
-
-</details>
-
-#### Common Options
+## ⚙️ **Configuration Options**
 
 | Option | Description | Example |
 |--------|-------------|---------|
 | `--target` | Target IP/hostname/URL | `--target localhost` |
-| `--port` | Target port (auto-detected from URLs) | `--port 8080` |
-| `--threads` | Concurrent threads/connections | `--threads 1000` |
-| `--duration` | Attack duration in seconds | `--duration 60` |
-| `--allow-private` | Allow localhost/private network testing | `--allow-private` |
-| `--verbose` | Enable detailed logging | `--verbose` |
+| `--port` | Target port | `--port 8080` |
+| `--threads` | Concurrent workers | `--threads 1000` |
+| `--duration` | Duration (0=infinite) | `--duration 0` |
+| `--allow-private` | Allow localhost testing | `--allow-private` |
+| `--spoof-ip` | Enable IP spoofing | `--spoof-ip` |
 
 ---
 
-## 📊 **Attack Profiles**
+## 📊 **Real-Time Statistics**
 
-FloodX includes pre-configured attack profiles for different testing scenarios:
+FloodX provides live monitoring with colored output:
 
-### 🟢 Light Profile
-- **Purpose**: Basic availability testing
-- **Intensity**: 100 concurrent connections
-- **Duration**: 30 seconds
-- **Use Case**: Initial reconnaissance
-
-### 🟡 Moderate Profile  
-- **Purpose**: Standard load testing
-- **Intensity**: 500 concurrent connections
-- **Duration**: 120 seconds
-- **Use Case**: Capacity evaluation
-
-### 🔴 Full Profile
-- **Purpose**: Stress testing
-- **Intensity**: 2000+ concurrent connections
-- **Duration**: 300 seconds
-- **Use Case**: Maximum resilience testing
-
-```bash
-# Use predefined profiles
-python main.py profile --config profiles/moderate.yaml
+```
+[  15.2s] ⚡12,500 pkts 📊823.4 pps 📡25 conn 💾488.3 KB 🔥10 threads ❌2 errs
+🎭 Generated 1,894 spoofed IP addresses
+🔄 Cycle 3: 2,847 packets, 12 errors
 ```
 
 ---
 
 ## 🛡️ **Safety Features**
 
-FloodX includes multiple safety mechanisms:
-
-### 🔒 **Target Validation**
-- Automatic detection of private/localhost addresses
-- DNS resolution safety checks
-- Confirmation prompts for dangerous operations
-
-### 📋 **Logging & Monitoring**
-- Comprehensive attack logging
-- Real-time statistics tracking
-- Error reporting and debugging
-
-### ⚙️ **Rate Limiting**
-- Built-in traffic throttling
-- Resource consumption monitoring
-- Graceful shutdown mechanisms
+- ✅ **Target Validation**: Automatic localhost/private network detection
+- ✅ **Confirmation Prompts**: Safety checks before dangerous operations  
+- ✅ **Graceful Shutdown**: Clean Ctrl+C handling with statistics
+- ✅ **Error Handling**: Comprehensive error reporting and recovery
 
 ---
 
-## 🔧 **Advanced Configuration**
+## 🚨 **Important Usage Notes**
 
-### Profile-Based Attacks
+### ⚠️ **Administrator/Root Required**
+- **Windows**: Run PowerShell as Administrator
+- **Linux/macOS**: Use `sudo` for raw socket operations
 
-Create custom YAML configuration files:
-
-```yaml
-# custom_attack.yaml
-attack:
-  target: "https://example.com"
-  vectors:
-    - type: "syn"
-      threads: 1000
-      duration: 60
-    - type: "http"
-      threads: 200
-      method: "GET"
-      user_agents: true
-  
-options:
-  allow_private: false
-  verbose: true
-  proxy_rotation: true
-```
-
+### 🏠 **Testing on Localhost**
+Always use `--allow-private` for local testing:
 ```bash
-python main.py profile custom_attack.yaml
+python main.py syn --target localhost --allow-private
 ```
 
-### IP Spoofing Configuration
-
-```python
-# Enable IP spoofing (requires root/admin)
-python main.py syn --target example.com --spoof-ip --spoof-ranges "10.0.0.0/8,172.16.0.0/12"
-```
-
----
-
-## 📈 **Performance Optimization**
-
-### System Requirements
-
-| Component | Minimum | Recommended |
-|-----------|---------|-------------|
-| **CPU** | 2 cores | 4+ cores |
-| **RAM** | 2GB | 8GB+ |
-| **Network** | 10 Mbps | 100+ Mbps |
-| **OS** | Any modern OS | Linux/Windows Server |
-
-### Optimization Tips
-
-1. **Increase system limits**:
-   ```bash
-   # Linux - increase file descriptors
-   ulimit -n 65536
-   
-   # Windows - run as Administrator
-   ```
-
-2. **Network optimization**:
-   ```bash
-   # Linux - optimize network stack
-   echo 'net.core.somaxconn = 65536' >> /etc/sysctl.conf
-   sysctl -p
-   ```
-
-3. **Python optimization**:
-   ```bash
-   # Use PyPy for better performance
-   pypy3 main.py syn --target example.com
-   ```
-
----
-
-## 🐛 **Troubleshooting**
-
-<details>
-<summary>❌ <strong>Common Issues</strong></summary>
-
-**Permission Denied Errors**
-```bash
-# Solution: Run with elevated privileges
-sudo python main.py  # Linux/macOS
-# Run PowerShell as Administrator on Windows
-```
-
-**Scapy Import Errors**
-```bash
-# Solution: Install scapy dependencies
-pip install scapy[complete]
-```
-
-**Network Unreachable**
-```bash
-# Solution: Check target accessibility
-ping target_host
-telnet target_host target_port
-```
-
-**Low Attack Performance**
-```bash
-# Solution: Increase system resources
-python main.py syn --target example.com --threads 100  # Start small
-```
-
-</details>
+### 🛑 **Stopping Attacks**
+- Press `Ctrl+C` to stop any running attack
+- All attacks now run endlessly until manually stopped
+- Statistics are displayed on shutdown
 
 ---
 
 ## 🤝 **Contributing**
 
-We welcome contributions from the cybersecurity community!
+Contributions welcome! Please:
 
-### How to Contribute
-
-1. **Fork the repository**
-2. **Create a feature branch**: `git checkout -b feature/new-attack-vector`
-3. **Commit changes**: `git commit -am 'Add new attack vector'`
-4. **Push to branch**: `git push origin feature/new-attack-vector`
-5. **Submit Pull Request**
-
-### Development Setup
-
-```bash
-# Clone your fork
-git clone https://github.com/leogreyson/floodx
-cd floodx
-
-# Install development dependencies
-pip install -r requirements-dev.txt
-
-# Run tests
-python -m pytest tests/
-
-# Code formatting
-black src/
-flake8 src/
-```
-
-### Contribution Guidelines
-
-- 📝 Write clear, documented code
-- 🧪 Include tests for new features
-- 🛡️ Maintain security best practices
-- 📋 Update documentation
-- ⚖️ Ensure legal compliance
-
----
-
-## 📚 **Documentation**
-
-### Project Structure
-
-```
-floodx-ddos-toolkit/
-├── 📁 src/
-│   ├── 📁 python/           # Main Python implementation
-│   │   ├── 📁 app_layer_attacks/   # Layer 7 attacks
-│   │   ├── 📁 common/              # Shared utilities
-│   │   ├── 📁 dns_utils/           # DNS utilities
-│   │   ├── 📁 orchestrator/        # Core orchestration
-│   │   └── main.py                 # Entry point
-│   ├── 📁 c_cpp/            # High-performance C/C++ modules
-│   ├── 📁 go/               # Go implementations
-│   └── 📁 main/             # Main orchestrator
-├── 📁 build/                # Build scripts
-├── 📁 run/                  # Runtime scripts
-├── 📁 profiles/             # Attack profiles
-├── 📁 docs/                 # Detailed documentation
-├── 📁 tests/                # Test suite
-├── requirements.txt         # Python dependencies
-└── README.md               # This file
-```
-
-### API Documentation
-
-For detailed API documentation, see [docs/API.md](docs/API.md).
-
----
-
-## 🔒 **Security Considerations**
-
-### Ethical Guidelines
-
-- ✅ **DO**: Test your own systems
-- ✅ **DO**: Get explicit written permission
-- ✅ **DO**: Use in controlled environments
-- ✅ **DO**: Report findings responsibly
-
-- ❌ **DON'T**: Attack systems without permission
-- ❌ **DON'T**: Use for malicious purposes
-- ❌ **DON'T**: Exceed authorized scope
-- ❌ **DON'T**: Share attack logs publicly
-
-### Reporting Security Issues
-
-If you discover security vulnerabilities in FloodX:
-
-1. **Do NOT** create public issues
-2. Email security concerns to: [info@leogreyson.org/](leo:info@leogreyson.org)
-3. Include detailed reproduction steps
-4. Allow reasonable time for fixes
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
 ---
 
@@ -547,56 +260,24 @@ If you discover security vulnerabilities in FloodX:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-```
-MIT License
-
-Copyright (c) 2025 FloodX Project
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-```
-
 ---
 
-## 🌟 **Acknowledgments**
+## 📞 **Support & Community**
 
-- **Scapy Team** - For the excellent packet manipulation library
-- **Python AsyncIO** - For high-performance async networking
-- **Cybersecurity Community** - For responsible disclosure practices
-- **Contributors** - For making this project better
-
----
-
-## 📞 **Support**
-
-### Getting Help
-
-- 📖 **Documentation**: [docs/](docs/)
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/leogreyson/floodx/issues)
+- 🐛 **Issues**: [GitHub Issues](https://github.com/leogreyson/floodx/issues)
 - 💬 **Discussions**: [GitHub Discussions](https://github.com/leogreyson/floodx/discussions)
 - 📧 **Email**: [info@leogreyson.org](mailto:info@leogreyson.org)
-
-### Community
-
 - 🐦 **Twitter**: [@LeoTechSecurity](https://x.com/LeoTechSecurity)
-- 💼 **LinkedIn**: [Leo Technology](https://www.linkedin.com/in/leo-technology/)
-- 🌐 **Website**: [LeoTech Community](https://leogreyson.org/)
+- 🌐 **Website**: [LeoGreyson.org](https://leogreyson.org/)
 
 ---
 
 <div align="center">
 
-**⭐ Star this repository if you find it useful!**
+**⭐ Star this repo if you find it useful!**
 
-**🔒 Remember: With great power comes great responsibility**
+**🔒 Remember: Use responsibly and legally**
 
-*Made with ❤️ by cybersecurity professionals, for cybersecurity professionals*
+*Made with ❤️ for cybersecurity professionals*
 
 </div>

@@ -1,0 +1,27 @@
+# Production dependencies
+-r requirements.txt
+
+# Development and testing dependencies
+pytest>=7.0.0
+pytest-asyncio>=0.20.0
+pytest-cov>=4.0.0
+black>=22.0.0
+flake8>=5.0.0
+mypy>=0.991
+isort>=5.10.0
+bandit>=1.7.0
+
+# Documentation
+sphinx>=5.0.0
+sphinx-rtd-theme>=1.0.0
+myst-parser>=0.18.0
+
+# Development tools
+pre-commit>=2.20.0
+tox>=3.25.0
+wheel>=0.37.0
+twine>=4.0.0
+
+# Security scanning
+safety>=2.0.0
+semgrep>=1.0.0

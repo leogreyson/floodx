@@ -23,6 +23,19 @@
 
 ---
 
+## ⚠️ **LEGAL DISCLAIMER**
+
+> **🔴 FOR AUTHORIZED TESTING ONLY**
+> 
+> This tool is designed for:
+> - 🎓 **Educational purposes** and cybersecurity research
+> - 🔒 **Authorized penetration testing** with explicit permission
+> - 🏢 **Network security assessment** of your own systems
+> 
+> **⚖️ Users are responsible for legal compliance. Unauthorized use is illegal.**
+
+---
+
 ## 🚀 **What is FloodX?**
 
 FloodX is a powerful, multi-vector DDoS testing framework that helps cybersecurity professionals assess network resilience. It features **endless continuous attacks** with automatic restart mechanisms and intelligent IP spoofing.

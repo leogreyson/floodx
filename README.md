@@ -31,6 +31,7 @@ FloodX is a powerful, multi-vector DDoS testing framework that helps cybersecuri
 
 - 🔄 **Endless Attacks**: All vectors run continuously until manually stopped
 - 🎯 **8 Attack Vectors**: SYN, HTTP, ICMP, TLS, UDP, Slowloris, WebSocket, SMTP
+- ⚡ **Multi-Vector Attacks**: Coordinate multiple attack types simultaneously for maximum impact
 - 🔄 **Auto-Restart**: Intelligent worker restart for continuous operation  
 - 🎭 **IP Spoofing**: Generate 1,500-2,500 randomized IP addresses per session
 - 📊 **Real-time Stats**: Live performance monitoring with colored output

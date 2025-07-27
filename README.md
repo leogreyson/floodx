@@ -67,14 +67,22 @@ cd floodx
 <summary><strong>🐧 Linux</strong></summary>
 
 ```bash
-# Download and run the installer
+# Step 1: Update system and install Python + pip
+sudo apt update && sudo apt install python3 python3-pip -y
+
+# Step 2: Download FloodX
 git clone https://github.com/leogreyson/floodx.git
 cd floodx
-chmod +x install.sh floodx
-./install.sh
 
-# Launch FloodX (Interactive Mode)
-./floodx
+# Step 3: Install dependencies (simple!)
+sudo pip3 install -r requirements.txt
+
+# Step 4: Make launcher executable and run
+chmod +x floodx.sh
+sudo ./floodx.sh
+
+# Alternative: Install system packages directly (no pip needed)
+# sudo apt install python3-aiohttp python3-websockets python3-requests python3-colorama python3-yaml python3-scapy
 ```
 
 </details>
@@ -86,11 +94,11 @@ chmod +x install.sh floodx
 # Download and run the installer
 git clone https://github.com/leogreyson/floodx.git
 cd floodx
-chmod +x install-macos.sh floodx
+chmod +x install-macos.sh floodx.sh
 ./install-macos.sh
 
 # Launch FloodX (Interactive Mode)  
-./floodx
+./floodx.sh
 ```
 
 </details>
@@ -102,12 +110,134 @@ chmod +x install-macos.sh floodx
 git clone https://github.com/leogreyson/floodx.git
 cd floodx
 
-# Install dependencies  
+# Method 1: Simple System Installation (RECOMMENDED)
+# Step 1: Install Python and pip
+sudo apt update && sudo apt install python3 python3-pip -y
+# Step 2: Install dependencies with pip
+sudo pip3 install -r requirements.txt
+
+# Method 2: System packages (Ubuntu/Debian - no pip needed)
+sudo apt install python3-aiohttp python3-websockets python3-requests python3-colorama python3-yaml python3-scapy
+
+# Method 3: User installation (if no sudo access)
+pip3 install --user -r requirements.txt
+
+# Method 4: Virtual environment (if you prefer isolation)
+python3 -m venv floodx-env
+source floodx-env/bin/activate
 pip install -r requirements.txt
 
 # Test installation
-python main.py --help
+sudo python3 main.py --help
 ```
+
+### 🔧 **Troubleshooting Installation Issues**
+
+<details>
+<summary><strong>🚫 "externally-managed-environment" Error (Ubuntu 23.04+)</strong></summary>
+
+**Problem**: Modern Linux distributions prevent system-wide pip installations
+
+**Solutions**:
+```bash
+# Option 1: Install with sudo (RECOMMENDED - simple and works)
+sudo pip3 install -r requirements.txt
+
+# Option 2: Install system packages via apt (no pip needed)
+sudo apt install python3-aiohttp python3-websockets python3-requests python3-colorama python3-yaml python3-scapy
+
+# Option 3: User installation (no sudo needed)
+pip3 install --user -r requirements.txt
+
+# Option 4: Use virtual environment (if you prefer isolation)
+python3 -m venv floodx-env
+source floodx-env/bin/activate
+pip install -r requirements.txt
+
+# Option 5: Override system protection (NOT RECOMMENDED)
+pip3 install -r requirements.txt --break-system-packages
+```
+
+**Running FloodX after installation**:
+```bash
+# Simple system installation - just run with sudo
+sudo python3 main.py --help
+sudo python3 main.py --interactive
+
+# User installation - run normally
+python3 main.py --help
+python3 main.py --interactive
+
+# Virtual environment - activate first
+source floodx-env/bin/activate
+python3 main.py --help
+```
+
+</details>
+
+<details>
+<summary><strong>❌ "pip3: command not found" Error</strong></summary>
+
+**Problem**: The installer fails with "pip3: command not found"
+
+**Solutions**:
+```bash
+# Option 1: Install pip3 (Ubuntu/Debian)
+sudo apt update && sudo apt install python3-pip -y
+
+# Option 2: Install pip3 (CentOS/RHEL)
+sudo yum install python3-pip -y
+
+# Option 3: Install pip3 (Fedora)
+sudo dnf install python3-pip -y
+
+# Option 4: Use alternative pip command
+python3 -m pip install -r requirements.txt
+
+# Option 5: Manual dependency installation
+pip install aiohttp asyncio scapy websockets requests colorama pyyaml
+```
+
+</details>
+
+<details>
+<summary><strong>⚠️ Permission Denied Errors</strong></summary>
+
+**Problem**: Permission errors during installation
+
+**Solutions**:
+```bash
+# Always use sudo for the installer
+sudo ./install.sh
+
+# For manual installation, use --user flag
+pip3 install --user -r requirements.txt
+
+# Or install system-wide with sudo
+sudo pip3 install -r requirements.txt
+```
+
+</details>
+
+<details>
+<summary><strong>🐍 Python Version Issues</strong></summary>
+
+**Problem**: Python version compatibility issues
+
+**Solutions**:
+```bash
+# Check Python version (needs 3.8+)
+python3 --version
+
+# Install newer Python on Ubuntu
+sudo apt install python3.10 python3.10-pip -y
+
+# Use specific Python version
+python3.10 -m pip install -r requirements.txt
+python3.10 main.py --help
+```
+
+</details>
 
 ### 🖥️ **Platform-Specific Setup**
 
@@ -133,16 +263,26 @@ python main.py --help
 <summary><img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" width="20"> <strong>Linux</strong></summary>
 
 ```bash
-# Update packages
+# Update packages and install dependencies
 sudo apt update && sudo apt install python3 python3-pip -y
 
-# Clone and setup
+# Clone and setup (simple system installation)
 git clone https://github.com/leogreyson/floodx.git
 cd floodx
-pip3 install -r requirements.txt
+sudo pip3 install -r requirements.txt
 
 # Test installation (requires sudo for raw sockets)
 sudo python3 main.py --help
+
+# Alternative: System packages installation (no pip needed)  
+sudo apt install python3-aiohttp python3-websockets python3-requests python3-colorama python3-yaml python3-scapy
+sudo python3 main.py --help
+
+# Alternative: Virtual environment (if you prefer isolation)
+python3 -m venv floodx-env
+source floodx-env/bin/activate
+pip install -r requirements.txt
+sudo floodx-env/bin/python3 main.py --help
 ```
 
 </details>
@@ -178,7 +318,7 @@ sudo python3 main.py --help
 .\floodx.bat
 
 # Linux/macOS
-./floodx
+./floodx.sh
 ```
 
 **Option 2: Command Line Mode (Advanced Users)**
@@ -282,17 +422,44 @@ FloodX provides live monitoring with colored output:
 
 ### 🚀 **Easy Launch Scripts**
 - **Windows**: Double-click `floodx.bat` or use `.\floodx.bat` in PowerShell
-- **Linux/macOS**: Use `./floodx` (after `chmod +x floodx`)
+- **Linux/macOS**: Use `./floodx.sh` (after `chmod +x floodx.sh`)
 
 | Platform | Installer | Launcher |
 |----------|-----------|----------|
 | 🪟 **Windows** | `install.bat` | `floodx.bat` |
-| 🐧 **Linux** | `install.sh` | `floodx` |
-| 🍎 **macOS** | `install-macos.sh` | `floodx` |
+| 🐧 **Linux** | `install.sh` | `floodx.sh` |
+| 🍎 **macOS** | `install-macos.sh` | `floodx.sh` |
 
 ### ⚠️ **Administrator/Root Required**
 - **Windows**: Run PowerShell as Administrator
-- **Linux/macOS**: Use `sudo` for raw socket operations
+- **Linux/macOS**: Use `sudo` for raw socket operations and installation
+
+### 🚨 **Quick Fix for "externally-managed-environment" Error**
+```bash
+# RECOMMENDED: Simple system installation with sudo
+sudo pip3 install -r requirements.txt
+
+# OR use system packages (no pip needed)
+sudo apt install python3-aiohttp python3-websockets python3-requests python3-colorama python3-yaml python3-scapy
+
+# OR user installation (no sudo needed)
+pip3 install --user -r requirements.txt
+
+# OR virtual environment (if you prefer isolation)
+python3 -m venv floodx-env && source floodx-env/bin/activate && pip install -r requirements.txt
+```
+
+### 🚨 **Quick Fix for "pip3: command not found"**
+```bash
+# Install pip3 first, then retry installation
+sudo apt update && sudo apt install python3-pip -y
+sudo ./install.sh
+
+# OR install dependencies manually
+pip3 install -r requirements.txt
+# OR use alternative method
+python3 -m pip install -r requirements.txt
+```
 
 ### 🏠 **Testing on Localhost**
 Always use `--allow-private` for local testing:

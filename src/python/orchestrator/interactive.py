@@ -33,21 +33,22 @@ class FloodXTUI:
     def display_banner(self):
         """Display the main FloodX banner with slight variations."""
         import random
-        
+
+        # ANSI color codes
+        GREEN = "\033[92m"
+        RESET = "\033[0m"
+
         # Randomly vary the legal notice
         legal_notices = [
             "⚠️  IMPORTANT LEGAL NOTICE:",
-            "⚠️  LEGAL DISCLAIMER:",
-            "⚠️  COMPLIANCE NOTICE:",
         ]
-        
+
         disclaimers = [
-            "• Educational and authorized testing purposes only",
             "• For network security research and authorized penetration testing",
             "• Intended for cybersecurity professionals and researchers only"
         ]
-        
-        banner = f"""
+
+        banner = f"""{GREEN}
 ╔══════════════════════════════════════════════════════════════════════════════╗
 ║                                                                              ║
 ║    ███████╗██╗      ██████╗  ██████╗ ██████╗ ██╗  ██╗                        ║
@@ -55,7 +56,7 @@ class FloodXTUI:
 ║    █████╗  ██║     ██║   ██║██║   ██║██║  ██║ ╚███╔╝                         ║
 ║    ██╔══╝  ██║     ██║   ██║██║   ██║██║  ██║ ██╔██╗                         ║
 ║    ██║     ███████╗╚██████╔╝╚██████╔╝██████╔╝██╔╝ ██╗                        ║
-║    ╚═╝     ╚══════╝ ╚═════╝  ╚═════╝ ╚═════╝ ╚═╝  ╚═╝                        ║
+║    ╚═╝     ╚══════╝ ╚═════╝  ╚═════╝ ╚═════╝ ╚═══╝                         ║
 ║                                                                              ║
 ║  Multi-Vector DDoS Toolkit by Leo • https://github.com/leogreyson/floodx     ║
 ║                                                                              ║
@@ -65,7 +66,8 @@ class FloodXTUI:
 ║  • Users are responsible for compliance with local laws                       ║
 ║  • We are defending our nation by removing fake news sites from Siem          ║
 ╚══════════════════════════════════════════════════════════════════════════════╝
-        """
+{RESET}"""
+
         print(banner)
         
     def display_main_menu(self):
@@ -558,7 +560,7 @@ class FloodXTUI:
         if await self.get_yes_no("\nProceed with multi-vector attack? (y/N): "):
             config = {
                 'target': target,
-                'vector': 'multi',
+                'vector': 'multi_vector',
                 'vectors': selected_vectors,
                 'intensity': intensity,
                 'duration': duration,
@@ -801,7 +803,7 @@ class FloodXTUI:
         if await self.get_yes_no("\nExecute this profile now? (y/N): "):
             config = {
                 'target': target,
-                'vector': 'multi',
+                'vector': 'multi_vector',
                 'vectors': vectors,
                 'duration': duration,
                 'concurrency': concurrency,
@@ -857,7 +859,7 @@ class FloodXTUI:
                     
                     config = {
                         'target': target,
-                        'vector': 'multi',
+                        'vector': 'multi_vector',
                         'vectors': [v.get('type') for v in profile_data.get('vectors', [])],
                         'duration': 60,
                         'concurrency': 500,

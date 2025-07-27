@@ -1,5 +1,4 @@
-https://github.com/leogreyson/floodx# 🌊 FloodX - Multi-Vector DDoS Toolkit
-
+# 🌊 FLOODX - Multi-Vector DDoS Toolkit
 <div align="center">
 
 ```
@@ -14,24 +13,13 @@ https://github.com/leogreyson/floodx# 🌊 FloodX - Multi-Vector DDoS Toolkit
 **Advanced Multi-Vector DDoS Testing Framework**  
 *Professional Network Security Research & Penetration Testing Tool*
 
+**Author**: Leo Greyson
+
 [![Python](https://img.shields.io/badge/Python-3.8%2B-3776ab?logo=python&logoColor=white)](https://python.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Cross--Platform-lightgrey)](#installation)
 
 </div>
-
----
-
-## ⚠️ **LEGAL DISCLAIMER**
-
-> **🔴 FOR AUTHORIZED TESTING ONLY**
-> 
-> This tool is designed for:
-> - 🎓 **Educational purposes** and cybersecurity research
-> - 🔒 **Authorized penetration testing** with explicit permission
-> - 🏢 **Network security assessment** of your own systems
-> 
-> **⚖️ Users are responsible for legal compliance. Unauthorized use is illegal.**
 
 ---
 
@@ -64,7 +52,7 @@ git clone https://github.com/leogreyson/floodx.git
 cd floodx
 
 # Install dependencies  
-pip install scapy aiohttp websockets psutil colorama
+pip install -r requirements.txt
 
 # Navigate to source
 cd src/python
@@ -82,7 +70,7 @@ cd src/python
 # Clone and setup
 git clone https://github.com/leogreyson/floodx.git
 cd floodx
-pip install scapy aiohttp websockets psutil colorama
+pip install -r requirements.txt
 cd src\python
 
 # Test installation
@@ -101,7 +89,7 @@ sudo apt update && sudo apt install python3 python3-pip -y
 # Clone and setup
 git clone https://github.com/leogreyson/floodx.git
 cd floodx
-pip3 install scapy aiohttp websockets psutil colorama
+pip3 install -r requirements.txt
 cd src/python
 
 # Test installation (requires sudo for raw sockets)
@@ -121,7 +109,7 @@ sudo python3 main.py --help
 brew install python3
 git clone https://github.com/leogreyson/floodx.git
 cd floodx
-pip3 install scapy aiohttp websockets psutil colorama
+pip3 install -r requirements.txt
 cd src/python
 
 # Test installation (requires sudo for raw sockets)
@@ -259,6 +247,34 @@ Contributions welcome! Please:
 ## 📄 **License**
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## ☕ **Buy Me Coffee**
+
+<div align="center">
+
+If you find FloodX useful and want to support development, you can buy me a coffee! 
+
+### 🇰🇭 **KHQR Payment (Cambodia)**
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_Cambodia.svg/50px-Flag_of_Cambodia.svg.png" alt="Cambodia Flag" width="30">
+
+<div align="center">
+
+[![KHQR Payment](https://i.ibb.co/Zp2RW4B4/QR-Copy.png)](https://link.payway.com.kh/ABAPAYYB3697967)
+
+**🔗 Quick Pay**: [link.payway.com.kh/ABAPAYYB3697967](https://link.payway.com.kh/ABAPAYYB3697967)
+
+</div>
+
+*Scan QR code or click the link above - works with any Cambodian banking app (ABA, ACLEDA, Wing, etc.)*
+
+### 🌍 **International Support**
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/leogreyson)
+
+</div>
 
 ---
 

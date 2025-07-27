@@ -1,0 +1,36 @@
+# FloodX Moderate Profile - Standard Load Testing
+# Suitable for capacity evaluation and performance benchmarking
+
+attack:
+  target: "localhost"
+  allow_private: true
+  
+vectors:
+  - type: "syn"
+    threads: 500
+    duration: 120
+    port: 80
+    spoof_ip: false
+    
+  - type: "http"
+    threads: 200
+    duration: 120
+    method: "GET"
+    user_agents: true
+    port: 80
+    
+  - type: "icmp"
+    threads: 100
+    duration: 120
+    packet_size: 64
+
+options:
+  verbose: true
+  log_file: "logs/moderate_profile.log"
+  real_time_stats: true
+  
+profile:
+  name: "Moderate Load Testing Profile"
+  description: "Standard capacity and performance evaluation"
+  intensity: "moderate"
+  risk_level: "medium"

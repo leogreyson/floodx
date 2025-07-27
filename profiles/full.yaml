@@ -1,0 +1,43 @@
+# FloodX Full Profile - Stress Testing
+# Suitable for maximum capacity testing and resilience evaluation
+
+attack:
+  target: "localhost"
+  allow_private: true
+  
+vectors:
+  - type: "syn"
+    threads: 2000
+    duration: 300
+    port: 80
+    spoof_ip: false
+    
+  - type: "http" 
+    threads: 1000
+    duration: 300
+    method: "GET"
+    user_agents: true
+    port: 80
+    
+  - type: "icmp"
+    threads: 500
+    duration: 300
+    packet_size: 1024
+    
+  - type: "tls"
+    threads: 200
+    duration: 300
+    port: 443
+
+options:
+  verbose: true
+  log_file: "logs/full_profile.log"
+  real_time_stats: true
+  statistics_interval: 10
+  
+profile:
+  name: "Full Stress Testing Profile"
+  description: "Maximum capacity and resilience evaluation"
+  intensity: "full"
+  risk_level: "high"
+  warning: "High-intensity testing - ensure proper authorization"

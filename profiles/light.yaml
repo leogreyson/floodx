@@ -1,0 +1,28 @@
+# FloodX Light Profile - Basic Testing
+# Suitable for initial reconnaissance and basic availability testing
+
+attack:
+  target: "localhost"
+  allow_private: true
+  
+vectors:
+  - type: "syn"
+    threads: 50
+    duration: 30
+    port: 80
+    
+  - type: "http"
+    threads: 25
+    duration: 30
+    method: "GET"
+    port: 80
+
+options:
+  verbose: true
+  log_file: "logs/light_profile.log"
+  
+profile:
+  name: "Light Testing Profile"
+  description: "Basic availability and response testing"
+  intensity: "light"
+  risk_level: "low"

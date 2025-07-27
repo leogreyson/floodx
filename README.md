@@ -23,19 +23,6 @@
 
 ---
 
-## ⚠️ **LEGAL DISCLAIMER**
-
-> **🔴 FOR AUTHORIZED TESTING ONLY**
-> 
-> This tool is designed for:
-> - 🎓 **Educational purposes** and cybersecurity research
-> - 🔒 **Authorized penetration testing** with explicit permission
-> - 🏢 **Network security assessment** of your own systems
-> 
-> **⚖️ Users are responsible for legal compliance. Unauthorized use is illegal.**
-
----
-
 ## 🚀 **What is FloodX?**
 
 FloodX is a powerful, multi-vector DDoS testing framework that helps cybersecurity professionals assess network resilience. It features **endless continuous attacks** with automatic restart mechanisms and intelligent IP spoofing.
@@ -71,7 +58,7 @@ cd floodx
 .\install.bat
 
 # Launch FloodX (Interactive Mode)
-.\run.bat
+.\floodx.bat
 ```
 
 </details>
@@ -83,11 +70,11 @@ cd floodx
 # Download and run the installer
 git clone https://github.com/leogreyson/floodx.git
 cd floodx
-chmod +x install.sh run.sh
+chmod +x install.sh floodx
 ./install.sh
 
 # Launch FloodX (Interactive Mode)
-./run.sh
+./floodx
 ```
 
 </details>
@@ -99,11 +86,11 @@ chmod +x install.sh run.sh
 # Download and run the installer
 git clone https://github.com/leogreyson/floodx.git
 cd floodx
-chmod +x install-macos.sh run-macos.sh
+chmod +x install-macos.sh floodx
 ./install-macos.sh
 
 # Launch FloodX (Interactive Mode)  
-./run-macos.sh
+./floodx
 ```
 
 </details>
@@ -188,13 +175,10 @@ sudo python3 main.py --help
 **Option 1: Easy Interactive Mode (Recommended for Beginners)**
 ```bash
 # Windows
-.\run.bat
+.\floodx.bat
 
-# Linux  
-./run.sh
-
-# macOS
-./run-macos.sh
+# Linux/macOS
+./floodx
 ```
 
 **Option 2: Command Line Mode (Advanced Users)**
@@ -297,15 +281,14 @@ FloodX provides live monitoring with colored output:
 ## 🚨 **Important Usage Notes**
 
 ### 🚀 **Easy Launch Scripts**
-- **Windows**: Double-click `run.bat` or use `.\run.bat` in PowerShell
-- **Linux**: Use `./run.sh` (after `chmod +x run.sh`)
-- **macOS**: Use `./run-macos.sh` (after `chmod +x run-macos.sh`)
+- **Windows**: Double-click `floodx.bat` or use `.\floodx.bat` in PowerShell
+- **Linux/macOS**: Use `./floodx` (after `chmod +x floodx`)
 
 | Platform | Installer | Launcher |
 |----------|-----------|----------|
-| 🪟 **Windows** | `install.bat` | `run.bat` |
-| 🐧 **Linux** | `install.sh` | `run.sh` |
-| 🍎 **macOS** | `install-macos.sh` | `run-macos.sh` |
+| 🪟 **Windows** | `install.bat` | `floodx.bat` |
+| 🐧 **Linux** | `install.sh` | `floodx` |
+| 🍎 **macOS** | `install-macos.sh` | `floodx` |
 
 ### ⚠️ **Administrator/Root Required**
 - **Windows**: Run PowerShell as Administrator
